@@ -8,26 +8,39 @@
   </head>
   <body>
     <div
-      class="main-container text-center sm:text-center bg-[#8A2BE2] w-full h-screen flex flex-col items-center font-mono"
+      class="main-container w-full h-screen flex flex-col text-center sm:text-center font-mono items-center bg-gradient-to-b from-purple-500 to-pink-500"
     >
-      <div class="w-full h-[50%] flex flex-col items-center justify-end mb-5">
-        <!-- IMAGE -->
-        <div class="w-50 h-50 rounded-full bg-amber-50 mx-auto">
-          <p>halo</p>
+      <!-- HEADER CONTAINER -->
+      <div class="w-full h-[20%] flex justify-center items-center">
+        <h1 class="text-3xl text-[#FFFFFF] font-bold">Let's get started!</h1>
+      </div>
+
+      <!-- LOGO CONTAINER -->
+      <div class="w-full h-[50%] flex justify-center items-start">
+        <img
+          src="/ASSETS/QuizGame logo.png"
+          alt="LOGO"
+          class="w-[90%] h-[90%] rounded-2xl shadow-lg"
+        />
+      </div>
+
+      <!-- BUTTONS CONTAINER -->
+      <div
+        class="w-full h-[30%] flex flex-col justify-center items-center space-y-4"
+      >
+        <div>
+          <button
+            type="button"
+            class="w-70 h-13 text-[#FFFFFF] text-lg font-bold bg-[#4B0082] shadow-lg rounded-full"
+          >
+            Sign up
+          </button>
         </div>
-      </div>
-      <div class="w-full h-[10%] flex justify-center items-center">
-        <!-- TITLE -->
-        <h1 class="text-4xl font-bold text-[#FFFFFF]">BRAIN BUDDIES</h1>
-      </div>
-      <div class="w-full h-[40%] flex justify-center mt-20">
-        <!-- BUTTON -->
-        <button
-          type="button"
-          class="w-50 h-13 bg-[#4B0082] shadow-lg text-2xl font-bold text-[#FFFFFF] rounded-md"
-        >
-          START
-        </button>
+        <div>
+          <p class="text-sm text-[#FFFFFF]">
+            Already have an account? <span class="text-yellow-500">Log in</span>
+          </p>
+        </div>
       </div>
     </div>
   </body>
