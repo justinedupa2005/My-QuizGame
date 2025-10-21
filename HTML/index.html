@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="../CSS/style.css" rel="stylesheet" />
     <link rel="stylesheet" href="../CSS/main.css" />
+    <script type="module" src="../JS/firebaseAuth.js"></script>
   </head>
   <body>
     <div
@@ -29,16 +30,19 @@
         class="w-full h-[30%] flex flex-col justify-center items-center space-y-4"
       >
         <div>
-          <button
-            type="button"
-            class="w-70 h-13 text-[#FFFFFF] text-lg font-bold bg-[#4B0082] shadow-lg rounded-full"
+          <a href="signUp.html">
+            <button
+              type="button"
+              class="w-70 h-13 text-[#FFFFFF] text-lg font-bold bg-[#4B0082] shadow-lg rounded-full"
+            >
+              Sign up
+            </button></a
           >
-            Sign up
-          </button>
         </div>
         <div>
-          <p class="text-sm text-[#FFFFFF]">
-            Already have an account? <span class="text-yellow-500">Log in</span>
+          <p class="text-lg text-[#FFFFFF] font-semibold">
+            Already have an account?
+            <a href="login.html" class="text-[#4B0082] cursor-pointer">Login</a>
           </p>
         </div>
       </div>
