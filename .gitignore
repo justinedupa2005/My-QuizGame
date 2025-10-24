@@ -1,0 +1,20 @@
+# --- Node.js dependencies (if you ever use npm)
+node_modules/
+
+# --- Firebase build and cache files
+.firebase/
+.firebase-tools.json
+
+# --- Local environment keys (private!)
+.env
+.env.local
+.env.*.local
+firebase-debug.log
+
+# --- OS/system files
+.DS_Store
+Thumbs.db
+
+# --- Build or distribution folders
+dist/
+build/
