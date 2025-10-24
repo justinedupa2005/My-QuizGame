@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="../CSS/style.css" rel="stylesheet" />
     <link rel="stylesheet" href="../CSS/main.css" />
-    <script type="module" src="../JS/firebaseAuth.js"></script>
   </head>
   <body>
+    <div id="messageBox" class="hidden"></div>
     <div
       class="main-container text-center sm:text-center w-full h-screen flex flex-col items-center font-mono bg-gradient-to-b from-purple-500 to-pink-500"
     >
@@ -31,19 +31,22 @@
         >
           <input
             type="text"
-            placeholder="Username"
+            placeholder="Email"
+            id="lEmail"
             class="w-70 h-13 bg-[#FFFFFF] shadow-lg text-md rounded-lg pl-5"
           />
           <input
             type="password"
             placeholder="Password"
+            id="lPassword"
             class="w-70 h-13 bg-[#FFFFFF] shadow-lg text-md rounded-lg pl-5"
           />
           <button
             type="button"
+            id="signInBtn"
             class="w-70 h-13 text-[#FFFFFF] text-lg font-bold bg-[#4B0082] shadow-lg rounded-full mt-2"
           >
-            Login
+            Sign in
           </button>
         </div>
 
@@ -68,5 +71,6 @@
         </div>
       </div>
     </div>
+    <script type="module" src="../JS/firebaseAuth.js"></script>
   </body>
 </html>

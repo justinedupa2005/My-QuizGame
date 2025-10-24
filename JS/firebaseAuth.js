@@ -13,6 +13,7 @@ const firebaseConfig = {
     appId: "1:738834776023:web:c4581e984670a315e09592"
 };
 
+// DISPLAY SHOWMESSAGE FUNCTION
 function showMessage(message, type) {
   const messageBox = document.getElementById("messageBox");
   messageBox.textContent = message;
@@ -33,37 +34,65 @@ const auth = getAuth();
 const db = getFirestore();
 
 const signUp = document.getElementById("signUpBtn");
-signUp.addEventListener('click', async (event)=>{
+if (signUp) {
+  signUp.addEventListener('click', async (event) => {
     event.preventDefault();
     const username = document.getElementById("rUserName").value;
     const email = document.getElementById("rEmail").value;
     const password = document.getElementById("rPassword").value;
     const confirmPassword = document.getElementById("rConfirmPassword").value;
 
-    if(password !== confirmPassword){
-        showMessage("Passwords do not match!");
-        return;
+    if (password !== confirmPassword) {
+      showMessage("Passwords do not match!");
+      return;
     }
 
-    try{
-        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-        const user = userCredential.user;
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
 
-        // Save to firebase
-        await setDoc(doc(db, "users", user.uid), {
-            username: username,
-            email: email
-        })
+      // Save to Firestore
+      await setDoc(doc(db, "users", user.uid), {
+        username: username,
+        email: email
+      });
 
-        showMessage("Account Created Successfully!");
-        window.location.href = "login.html";
+      showMessage("Account Created Successfully!", "success");
+      window.location.href = "signIn.html";
+    } catch (error) {
+      if (error.code === "auth/email-already-in-use") {
+        showMessage("Email Address Already Exists!", "error");
+      } else {
+        showMessage("Unable to create user: " + error.message, "error");
+      }
+      console.error("Error:", error);
     }
-    catch (error) {
-        if (error.code === "auth/email-already-in-use") {
-            showMessage("Email Address Already Exists!");
-        } else {
-            showMessage("Unable to create user: " + error.message);
-        }
-        console.error("Error:", error);
+  });
+}
+
+
+const signIn = document.getElementById("signInBtn");
+console.log("signInBtn found?", signIn);
+if (signIn) {
+  signIn.addEventListener('click', async (event) => {
+    event.preventDefault();
+    const email = document.getElementById("lEmail").value;
+    const password = document.getElementById("lPassword").value;
+
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+
+      showMessage('Login is successful', "success");
+      localStorage.setItem('loggedInUserId', user.uid);
+      window.location.href = 'menu.html';
+    } catch (error) {
+      if (error.code === "auth/invalid-credential") {
+        showMessage("Incorrect Email or Password", "error");
+      } else {
+        showMessage("Account does not exist: " + error.message, "error");
+      }
+      console.error("Error:", error);
     }
-})
+  });
+}
