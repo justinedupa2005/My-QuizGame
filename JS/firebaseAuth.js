@@ -90,7 +90,7 @@ if (signIn) {
       if (error.code === "auth/invalid-credential") {
         showMessage("Incorrect Email or Password", "error");
       } else {
-        showMessage("Account does not exist: " + error.message, "error");
+        showMessage("Account does not Exist.");
       }
       console.error("Error:", error);
     }
