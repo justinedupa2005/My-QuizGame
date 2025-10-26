@@ -5,14 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="../CSS/style.css" rel="stylesheet" />
     <link rel="stylesheet" href="../CSS/main.css" />
+    <link rel="stylesheet" href="../CSS/menu.css" />
   </head>
   <body>
     <div
-      class="main-container text-center sm:text-center bg-[#8A2BE2] w-full h-screen flex flex-col items-center font-mono"
+      class="main-container w-full h-screen text-center font-mono sm:text-center flex flex-col items-center bg-gradient-to-b from-purple-600 to-pink-400"
     >
-      <!-- PROFILE TITLE -->
-      <div class="w-full h-[10%] flex-shrink-0 flex justify-start items-center">
-        <h1 class="text-2xl text-[#FFFFFF] font-bold ml-7">YOUR PROFILE</h1>
+      <!-- BACK BUTTON-->
+      <div class="w-full h-[10%] flex justify-center items-center">
+        <div class="w-[20%] h-full flex justify-center items-center">
+          <a href="menu.html"
+            ><img src="../ASSETS/back icon.png" alt="back" class="w-12 h-12"
+          /></a>
+        </div>
+
+        <!-- PROFILE TITLE -->
+        <div class="w-[80%] h-full flex items-center">
+          <h2 class="text-3xl text-[#FFFFFF] font-bold ml-14">Profile</h2>
+        </div>
       </div>
 
       <!-- MAIN CONTENTS -->
@@ -42,90 +52,28 @@
         </div>
 
         <!-- HIGH SCORES -->
-        <div class="w-full h-[60%] flex flex-col justify-center items-center">
-          <!-- LABEL -->
-          <div class="w-full h-[10%] flex justify-center items-center">
-            <div
-              class="w-[90%] h-[60%] flex flex-row justify-around items-center rounded-3xl font-black"
-            >
-              <div class="w-[20%] h-full flex justify-center items-center">
-                <span class="text-md text-yellow-500">Rank</span>
-              </div>
-              <div class="w-[45%] h-full flex justify-center items-center">
-                <span class="text-md text-yellow-500">Category</span>
-              </div>
-              <div class="w-[35%] h-full flex justify-center items-center">
-                <span class="text-md text-yellow-500">High Score</span>
-              </div>
-            </div>
+        <div
+          class="w-full h-[60%] flex flex-col justify-center items-center space-y-5"
+        >
+          <div class="highScoresDisplay shadow-lg rounded-md">
+            <span>1</span>
+            <span>Justine</span>
+            <span>100 pts</span>
           </div>
-
-          <!-- SCIENCE HIGH SCRORE-->
-          <div class="w-full h-[20%] flex justify-center items-center">
-            <div
-              class="w-[90%] h-[60%] flex flex-row justify-around items-center rounded-3xl bg-purple-300 font-semibold"
-            >
-              <div class="w-[20%] h-full flex justify-center items-center">
-                <span class="text-2xl text-[#FFFFFF]">1</span>
-              </div>
-              <div class="w-[45%] h-full flex justify-center items-center">
-                <span class="text-2xl text-[#FFFFFF]">SCIENCE</span>
-              </div>
-              <div class="w-[35%] h-full flex justify-center items-center">
-                <span class="text-2xl text-[#FFFFFF]">100</span>
-              </div>
-            </div>
+          <div class="highScoresDisplay shadow-lg rounded-md">
+            <span>1</span>
+            <span>Justine</span>
+            <span>100 pts</span>
           </div>
-
-          <!-- MATH HIGH SCORE -->
-          <div class="w-full h-[20%] flex justify-center items-center">
-            <div
-              class="w-[90%] h-[60%] flex flex-row justify-around items-center rounded-3xl bg-purple-300 font-semibold"
-            >
-              <div class="w-[20%] h-full flex justify-center items-center">
-                <span class="text-2xl text-[#FFFFFF]">5</span>
-              </div>
-              <div class="w-[45%] h-full flex justify-center items-center">
-                <span class="text-2xl text-[#FFFFFF]">MATH</span>
-              </div>
-              <div class="w-[35%] h-full flex justify-center items-center">
-                <span class="text-2xl text-[#FFFFFF]">85</span>
-              </div>
-            </div>
+          <div class="highScoresDisplay shadow-lg rounded-md">
+            <span>1</span>
+            <span>Justine</span>
+            <span>100 pts</span>
           </div>
-
-          <!-- HISTORY HIGH SCORE-->
-          <div class="w-full h-[20%] flex justify-center items-center">
-            <div
-              class="w-[90%] h-[60%] flex flex-row justify-around items-center rounded-3xl bg-purple-300 font-semibold"
-            >
-              <div class="w-[20%] h-full flex justify-center items-center">
-                <span class="text-2xl text-[#FFFFFF]">10</span>
-              </div>
-              <div class="w-[45%] h-full flex justify-center items-center">
-                <span class="text-2xl text-[#FFFFFF]">HISTORY</span>
-              </div>
-              <div class="w-[35%] h-full flex justify-center items-center">
-                <span class="text-2xl text-[#FFFFFF]">80</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- GENERAL HIGH SCORE -->
-          <div class="w-full h-[20%] flex justify-center items-center">
-            <div
-              class="w-[90%] h-[60%] flex flex-row justify-center items-center rounded-3xl bg-purple-300 font-semibold"
-            >
-              <div class="w-[20%] h-full flex justify-center items-center">
-                <span class="text-2xl text-[#FFFFFF]">3</span>
-              </div>
-              <div class="w-[45%] h-full flex justify-center items-center">
-                <span class="text-2xl text-[#FFFFFF]">GENERAL</span>
-              </div>
-              <div class="w-[35%] h-full flex justify-center items-center">
-                <span class="text-2xl text-[#FFFFFF]">93</span>
-              </div>
-            </div>
+          <div class="highScoresDisplay shadow-lg rounded-md">
+            <span>1</span>
+            <span>Justine</span>
+            <span>100 pts</span>
           </div>
         </div>
       </div>

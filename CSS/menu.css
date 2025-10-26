@@ -21,3 +21,15 @@
   justify-content: space-around;
   align-items: center;
 }
+
+.highScoresDisplay {
+  width: 20rem;
+  height: 4rem;
+  background-color: #4b0082;
+  color: #ffffff;
+  font-size: 1.3rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
