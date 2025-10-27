@@ -7,10 +7,10 @@
     <link rel="stylesheet" href="../CSS/main.css" />
   </head>
   <body>
-    <div id="messageBox" class="hidden"></div>
     <div
       class="main-container text-center sm:text-center w-full h-screen flex flex-col items-center font-mono bg-gradient-to-b from-purple-600 to-pink-400"
     >
+      <div id="signinMessage" class="messageDiv hidden"></div>
       <!-- HEADER CONTAINER -->
       <div class="w-full h-[30%] flex flex-col">
         <div class="w-full h-[80%] flex justify-center items-end">
@@ -23,7 +23,7 @@
           </div>
         </div>
         <div class="w-full h-[20%] flex justify-center items-start">
-          <h1 class="text-3xl text-[#FFFFFF]">Login</h1>
+          <h1 class="text-3xl text-[#FFFFFF]">Sign in</h1>
         </div>
       </div>
 
@@ -33,25 +33,29 @@
         <div
           class="w-full h-[50%] flex flex-col justify-center items-center space-y-4"
         >
-          <input
-            type="text"
-            placeholder="Email"
-            id="lEmail"
-            class="w-72 h-14 bg-[#FFFFFF] shadow-lg text-md rounded-lg pl-5"
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            id="lPassword"
-            class="w-72 h-14 bg-[#FFFFFF] shadow-lg text-md rounded-lg pl-5"
-          />
-          <button
-            type="button"
-            id="signInBtn"
-            class="w-72 h-14 text-[#FFFFFF] text-lg font-bold bg-[#4B0082] shadow-lg rounded-full mt-2"
-          >
-            Sign in
-          </button>
+          <form autocomplete="off" class="flex flex-col items-center space-y-4">
+            <input
+              type="text"
+              placeholder="Email"
+              id="lEmail"
+              autocomplete="off"
+              class="w-72 h-14 bg-[#FFFFFF] shadow-lg text-md rounded-lg pl-5"
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              id="lPassword"
+              autocomplete="new-password"
+              class="w-72 h-14 bg-[#FFFFFF] shadow-lg text-md rounded-lg pl-5"
+            />
+            <button
+              type="button"
+              id="signInBtn"
+              class="w-72 h-14 text-[#FFFFFF] text-lg font-bold bg-[#4B0082] shadow-lg rounded-full mt-2"
+            >
+              Sign in
+            </button>
+          </form>
         </div>
 
         <!-- FOOTER -->

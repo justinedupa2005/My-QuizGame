@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../CSS/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../CSS/main.css" />
+    <link rel="stylesheet" href="../CSS/game.css" />
+  </head>
+  <body>
+    <div
+      class="main-container w-full h-screen flex flex-col text-center sm:text-center font-mono items-center bg-gradient-to-b from-purple-600 to-pink-400"
+    >
+      <!-- TIME AND POINTS -->
+      <div class="w-full h-[15%] flex justify-center items-center">
+        <div class="w-[50%] h-full flex justify-center items-center">
+          <!-- CLOCK -->
+          <div class="w-[45%] h-full flex justify-center items-center">
+            <img
+              src="../ASSETS/clock icon.png"
+              alt="clock img"
+              class="w-10 h-10 ml-5"
+            />
+          </div>
+          <!-- TIME -->
+          <div class="w-[55%] h-full flex justify-center items-center">
+            <div
+              class="w-full h-10 text-lg text-white bg-[#4b0082] border-2 border-white rounded-full flex justify-center items-center"
+            >
+              <span>00:35</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- NUMBER OF QUESTIONS -->
+        <div class="w-[50%] h-full flex justify-center items-center">
+          <div
+            class="w-[80%] h-10 text-lg text-white bg-[#4b0082] border-2 border-white rounded-full flex justify-center items-center"
+          >
+            <span>5/10</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- QUESTIONS -->
+      <div class="w-full h-[30%] flex justify-center items-center">
+        <span class="text-2xl text-white font-semibold">What is 10 + 18?</span>
+      </div>
+
+      <!-- CHOICES -->
+      <div
+        class="w-full h-[55%] flex flex-col justify-start items-center space-y-4 mt-10"
+      >
+        <button id="choiceButton" class="choice-button">22</button>
+        <button id="choiceButton" class="choice-button">30</button>
+        <button id="choiceButton" class="choice-button">24</button>
+        <button id="choiceButton" class="choice-button">28</button>
+      </div>
+    </div>
+    <script type="module" src="../JS/firebaseAuth.js"></script>
+  </body>
+</html>

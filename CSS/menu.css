@@ -1,4 +1,4 @@
-.menuButtons {
+.menu-button {
   width: 13rem;
   height: 3.5rem;
   background-color: #4b0082;
@@ -8,6 +8,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: background-color 0.1s ease;
+  cursor: pointer;
+}
+
+.menu-button:hover {
+  background-color: #5c0aa5;
+}
+
+.menu-button:active {
+  background-color: #3a006b;
 }
 
 .leaderboardButtons {

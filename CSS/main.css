@@ -12,22 +12,13 @@ body {
   align-items: center;
 }
 
-#messageBox {
-  position: fixed;
-  padding: 12px 20px;
-  border-radius: 8px;
+.messageDiv {
   background-color: gold;
   color: white;
-  font-weight: bold;
-  z-index: 9999;
-  transition: opacity 0.5s ease;
-}
-.hidden {
-  display: none;
-}
-.success {
-  background-color: #4caf50;
-}
-.error {
-  background-color: #f44336;
+  padding: 10px 20px;
+  margin: 10px;
+  border-radius: 10px;
+  font-size: 1rem;
+  opacity: 0;
+  animation: fadeOut 7s forwards;
 }

@@ -14,18 +14,14 @@ const firebaseConfig = {
 };
 
 // DISPLAY SHOWMESSAGE FUNCTION
-function showMessage(message, type) {
-  const messageBox = document.getElementById("messageBox");
-  messageBox.textContent = message;
-  
-  // Remove old classes and apply the new one
-  messageBox.className = type; 
-  messageBox.style.display = "block";
-  
-  // Hide after 3 seconds
-  setTimeout(() => {
-    messageBox.style.display = "none";
-  }, 3000);
+function showMessage(message, divId) {
+  var messageDiv = document.getElementById(divId);
+  messageDiv.style.display = "block";
+  messageDiv.innerHTML = message;
+  messageDiv.style.opacity = 1;
+  setTimeout(function(){
+    messageDiv.style.opacity = 0;
+  }, 5000);
 }
 
 // Initialize Firebase
@@ -43,7 +39,7 @@ if (signUp) {
     const confirmPassword = document.getElementById("rConfirmPassword").value;
 
     if (password !== confirmPassword) {
-      showMessage("Passwords do not match!");
+      showMessage("Passwords do not match!", "signupMessage");
       return;
     }
 
@@ -57,13 +53,13 @@ if (signUp) {
         email: email
       });
 
-      showMessage("Account Created Successfully!", "success");
+      showMessage("Account Created Successfully!", "signupMessage");
       window.location.href = "signIn.html";
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
-        showMessage("Email Address Already Exists!", "error");
+        showMessage("Email Address Already Exists!", "signupMessage");
       } else {
-        showMessage("Unable to create user: " + error.message, "error");
+        showMessage("Unable to create user: ", "signupMessage");
       }
       console.error("Error:", error);
     }
@@ -83,14 +79,14 @@ if (signIn) {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
 
-      showMessage('Login is successful', "success");
+      showMessage('Login is successful', "signinMessage");
       localStorage.setItem('loggedInUserId', user.uid);
       window.location.href = 'menu.html';
     } catch (error) {
       if (error.code === "auth/invalid-credential") {
-        showMessage("Incorrect Email or Password", "error");
+        showMessage("Incorrect Email or Password", "signinMessage");
       } else {
-        showMessage("Account does not Exist.");
+        showMessage("Account does not Exist.", "signinMessage");
       }
       console.error("Error:", error);
     }
