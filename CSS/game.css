@@ -1,4 +1,5 @@
-.choice-button {
+.choice-button,
+.difficulty-level-buttons {
   width: 80%;
   height: 4rem;
   font-size: 1.875rem;
@@ -13,10 +14,12 @@
   cursor: pointer;
 }
 
-.choice-button:hover {
+.choice-button,
+.difficulty-level-buttons:hover {
   background-color: #5c0aa5;
 }
 
-.choice-button:active {
+.choice-button,
+.difficulty-level-buttons:active {
   background-color: #3a006b;
 }

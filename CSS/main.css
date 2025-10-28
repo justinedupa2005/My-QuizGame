@@ -22,3 +22,25 @@ body {
   opacity: 0;
   animation: fadeOut 7s forwards;
 }
+
+.page-title {
+  font-size: 2.25rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 2px 0 #3a006b, 4px 4px 0 #2b004f;
+}
+
+.back-button {
+  width: 3rem; /* same as w-12 */
+  height: 3rem; /* same as h-12 */
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.back-button:hover {
+  transform: scale(1.1);
+  filter: brightness(1.25);
+}
+
+.back-button:active {
+  transform: scale(0.95);
+}
