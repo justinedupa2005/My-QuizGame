@@ -35,12 +35,31 @@
         <div
           class="w-full h-[70%] flex flex-col justify-center items-center space-y-4"
         >
-          <button class="difficulty-level-buttons">Easy</button>
-          <button class="difficulty-level-buttons">Medium</button>
-          <button class="difficulty-level-buttons">Hard</button>
-          <button class="difficulty-level-buttons">Extreme</button>
+          <button
+            id="easyDifficulty"
+            class="difficultyBtn difficulty-level-buttons"
+            data-level="easy"
+          >
+            Easy
+          </button>
+          <button
+            id="mediumDifficulty"
+            class="difficultyBtn difficulty-level-buttons"
+            data-level="medium"
+          >
+            Medium
+          </button>
+          <button
+            id="hardDifficulty"
+            class="difficultyBtn difficulty-level-buttons"
+            data-level="hard"
+          >
+            Hard
+          </button>
         </div>
       </div>
     </div>
+    <script src="../JS/difficulty.js"></script>
+    <script src="../JS/utils.js"></script>
   </body>
 </html>
