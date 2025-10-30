@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../CSS/main.css" />
     <link rel="stylesheet" href="../CSS/menu.css" />
     <link rel="stylesheet" href="../CSS/game.css" />
+    <link rel="stylesheet" href="../CSS/difficultyLevel.css" />
   </head>
   <body>
     <div
@@ -59,6 +60,32 @@
         </div>
       </div>
     </div>
+
+    <!-- Loading Overlay with Circular Progress -->
+    <div class="loading-overlay" id="loadingOverlay">
+      <div style="text-align: center">
+        <div class="progress-container">
+          <svg class="progress-ring" width="150" height="150">
+            <circle
+              class="progress-ring-circle"
+              cx="75"
+              cy="75"
+              r="70"
+            ></circle>
+            <circle
+              class="progress-ring-progress"
+              id="progressCircle"
+              cx="75"
+              cy="75"
+              r="70"
+            ></circle>
+          </svg>
+          <div class="progress-text" id="progressText">0%</div>
+        </div>
+        <div class="loading-message">Loading questions...</div>
+      </div>
+
+    <!-- JS SCRIPT -->
     <script src="../JS/difficulty.js"></script>
     <script src="../JS/utils.js"></script>
   </body>

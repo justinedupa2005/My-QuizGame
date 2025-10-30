@@ -1,0 +1,61 @@
+/* Loading Overlay */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.loading-overlay.active {
+  display: flex;
+}
+
+/* Circular Progress Bar */
+.progress-container {
+  position: relative;
+  width: 150px;
+  height: 150px;
+}
+
+.progress-ring {
+  transform: rotate(-90deg);
+}
+
+.progress-ring-circle {
+  stroke: #e2e8f0;
+  fill: transparent;
+  stroke-width: 12;
+}
+
+.progress-ring-progress {
+  stroke: #ff28be;
+  fill: transparent;
+  stroke-width: 12;
+  stroke-linecap: round;
+  stroke-dasharray: 440;
+  stroke-dashoffset: 440;
+  transition: stroke-dashoffset 0.3s ease;
+}
+
+.progress-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.loading-message {
+  color: white;
+  font-size: 18px;
+  margin-top: 20px;
+  text-align: center;
+}
