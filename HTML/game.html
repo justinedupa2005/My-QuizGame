@@ -43,20 +43,28 @@
       </div>
 
       <!-- QUESTIONS -->
-      <div class="w-full h-[30%] flex justify-center items-center">
-        <span class="text-2xl text-white font-semibold">What is 10 + 18?</span>
+      <div
+        class="w-[90%] h-[35%] flex justify-center items-center border-3 border-white rounded-2xl"
+      >
+        <p
+          id="gameQuestion"
+          class="w-[90%] text-lg text-white font-semibold text-center break-words"
+        >
+          Question
+        </p>
       </div>
 
       <!-- CHOICES -->
       <div
-        class="w-full h-[55%] flex flex-col justify-start items-center space-y-4 mt-10"
+        class="w-full h-[50%] flex flex-col justify-start items-center space-y-4 mt-10"
       >
-        <button id="choiceButton" class="choice-button">22</button>
-        <button id="choiceButton" class="choice-button">30</button>
-        <button id="choiceButton" class="choice-button">24</button>
-        <button id="choiceButton" class="choice-button">28</button>
+        <button id="firstButton" class="choice-button">0</button>
+        <button id="secondButton" class="choice-button">0</button>
+        <button id="thirdButton" class="choice-button">0</button>
+        <button id="fourthButton" class="choice-button">0</button>
       </div>
     </div>
     <script type="module" src="../JS/firebaseAuth.js"></script>
+    <script src="../JS/game.js"></script>
   </body>
 </html>
