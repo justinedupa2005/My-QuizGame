@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="../CSS/game.css" />
   </head>
   <body>
+    <div id="overlay" class="overlay hidden">
+      <div class="overlay-message">Time’s Up!</div>
+    </div>
+
     <div
       class="main-container w-full h-screen flex flex-col text-center sm:text-center font-mono items-center bg-gradient-to-b from-purple-600 to-pink-400"
     >
@@ -25,9 +29,10 @@
           <!-- TIME -->
           <div class="w-[55%] h-full flex justify-center items-center">
             <div
+              id="timerContainer"
               class="w-full h-10 text-lg text-white bg-[#4b0082] border-2 border-white rounded-full flex justify-center items-center"
             >
-              <span>00:35</span>
+              <p id="timer"></p>
             </div>
           </div>
         </div>
@@ -35,9 +40,10 @@
         <!-- NUMBER OF QUESTIONS -->
         <div class="w-[50%] h-full flex justify-center items-center">
           <div
+            id="numOfQuestionContainer"
             class="w-[80%] h-10 text-lg text-white bg-[#4b0082] border-2 border-white rounded-full flex justify-center items-center"
           >
-            <span>5/10</span>
+            <p id="numberOfQuestions"></p>
           </div>
         </div>
       </div>
@@ -56,15 +62,19 @@
 
       <!-- CHOICES -->
       <div
+        id="choicesContainer"
         class="w-full h-[50%] flex flex-col justify-start items-center space-y-4 mt-10"
-      >
-        <button id="firstButton" class="choice-button">0</button>
-        <button id="secondButton" class="choice-button">0</button>
-        <button id="thirdButton" class="choice-button">0</button>
-        <button id="fourthButton" class="choice-button">0</button>
-      </div>
+      ></div>
     </div>
     <script type="module" src="../JS/firebaseAuth.js"></script>
     <script src="../JS/game.js"></script>
   </body>
 </html>
+
+<!-- SOME LEVEL DONT HAVE 10 QUESTIONS -->
+<!-- AFTER THE GAME SHOW NUMBER OF CORRECT ANSWERS OR HIS/HER SCORE THEN UPDATE IT IN THE LEADERBOARDS AND PROFILE -->
+<!-- ADD RETURN AFTER THE GAME AND RETURN THE PAGE TO THE MENU -->
+<!-- ADD PLAYER IMAGES -->
+<!-- ADD GMAIL LOGIN TO THE FIREBASEAUTH -->
+<!-- LEARN AND ADD SECURITY TO THE GAME -->
+<!-- CHECK AND FIX UI AND FUNCTIONALITY -->
