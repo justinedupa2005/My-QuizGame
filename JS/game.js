@@ -5,10 +5,11 @@ const numOfQuestionContainer = document.getElementById('numOfQuestionContainer')
 
 let questions = JSON.parse(sessionStorage.getItem('questions')) || [];
 
-questions = questions.filter(q => {
-    const choices = [...q.incorrect_answers, q.correct_answer];
-    return choices.every(choice => choice.length <= 15);
-});
+// GET QUESTIONS FROM API AND CHECKING THE LENGTH OF EVERY ANSWERS
+// questions = questions.filter(q => {
+//     const choices = [...q.incorrect_answers, q.correct_answer];
+//     return choices.every(choice => choice.length <= 15);
+// });
 
 let currentIndex = 0;
 let countdownInterval; // for stopping timer later
@@ -22,12 +23,14 @@ function startGame(){
         const q = questions[currentIndex];
         questionContainer.innerHTML = q.question;
 
+        // STORE ANSWERS FROM THE API
         const allAnswers = [...q.incorrect_answers.map(answer => ({text: answer, isCorrect: false})),
                             {text: q.correct_answer, isCorrect: true}
         ];
 
         const shuffledAnswers = allAnswers.sort(() => Math.random() - 0.5);
 
+        // DISPLAY TIMER
         let timer = document.getElementById('timer');
         if(!timer){
             timer = document.createElement('p');
@@ -35,6 +38,7 @@ function startGame(){
             timerContainer.appendChild(timer);
         }
 
+        // TIMER'S UP POP UP
         clearInterval(countdownInterval);
         timeLeft = 10;
         timer.textContent = `${timeLeft}`;
@@ -49,6 +53,7 @@ function startGame(){
             } 
         }, 1000);
 
+        // OVERLAY FOR THE TIMER POP UP
         function showOverlay(message) {
             const overlay = document.getElementById('overlay');
             const messageBox = overlay.querySelector('.overlay-message');
@@ -62,6 +67,7 @@ function startGame(){
             }, 1500); // show overlay for 1.5 seconds
         }
 
+        // DISPLAY QUESTIONS
         let numberOfQuestions = document.getElementById('numberOfQuestions');
         if(!numberOfQuestions){
             numberOfQuestions = document.createElement('p');
@@ -69,6 +75,7 @@ function startGame(){
             numOfQuestionContainer.appendChild(numberOfQuestions);
         }  
 
+        // CHECK THE DIFFICULTY LEVEL
         const level = sessionStorage.getItem('selectedDifficulty');
         if(level === 'easy'){
             numberOfQuestions.textContent = `${currentIndex + 1} / ${easyLevelNumOfQuestions}`;
@@ -80,12 +87,31 @@ function startGame(){
             numberOfQuestions.textContent = `${currentIndex + 1} / ${hardLevelNumOfQuestions}`;
         }
 
+        // CREATE BUTTONS AND CHANGE VALUES DEPENDING OF THE QUESTION
         choicesContainer.innerHTML = '';
-        shuffledAnswers.forEach((answer, i) => {
+        shuffledAnswers.forEach((answer) => {
             const btn = document.createElement('button');
+
+            const len = answer.text.length;
             btn.className = 'choice-button';
+
+            // Adjust button height based on length
+            if (len <= 15) btn.style.height = '4rem';
+            else if (len <= 30) btn.style.height = '6rem';
+            else if (len <= 50) btn.style.height = '8rem';
+            else if (len <= 80) btn.style.height = '10rem';
+            else btn.style.height = '12rem';
+
+            // 🔹 Adjust font size dynamically
+            if (len <= 15) btn.style.fontSize = '1.4rem';
+            else if (len <= 30) btn.style.fontSize = '1.2rem';
+            else if (len <= 50) btn.style.fontSize = '1rem';
+            else if (len <= 80) btn.style.fontSize = '0.9rem';
+            else btn.style.fontSize = '0.8rem';
+
             btn.textContent = answer.text;
             btn.onclick = () => {
+                clearInterval(countdownInterval);
                 const allButtons = choicesContainer.querySelectorAll('button');
                 allButtons.forEach(button => button.disabled = true);
 
@@ -107,6 +133,7 @@ function startGame(){
     }
 }
 
+// FUNCTION FOR NEXT QUESTION
 function nextQuestion(){
     currentIndex++;
     startGame();

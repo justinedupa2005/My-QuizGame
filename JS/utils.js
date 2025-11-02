@@ -1,6 +1,7 @@
 async function fetchQuestions(categoryId, difficulty, questionCount) {
     const progressController = showLoadingProgress();
 
+    // CREATE THE URL TO USE FOR FRTHCING API
     const url = `https://opentdb.com/api.php?amount=${questionCount}&category=${categoryId}&difficulty=${difficulty}&type=multiple`;
     
     try{

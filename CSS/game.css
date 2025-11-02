@@ -1,8 +1,8 @@
-.choice-button,
 .difficulty-level-buttons {
   width: 80%;
   height: 4rem;
   font-size: 1.875rem;
+  font-weight: 600;
   background-color: #4b0082;
   color: white;
   border: 2px solid white;
@@ -13,14 +13,50 @@
   cursor: pointer;
 }
 
-.choice-button:hover,
 .difficulty-level-buttons:hover {
   background-color: #6a0dad;
 }
 
-.choice-button:active,
 .difficulty-level-buttons:active {
   background-color: #3a006b;
+}
+
+.choice-button {
+  width: 80%;
+  min-height: 4rem; /* base height */
+  max-height: 9rem; /* prevent huge buttons */
+  padding: 0.5rem 1rem; /* spacing for wrapped text */
+  font-size: 1.5rem; /* slightly smaller to fit text */
+  font-weight: 600;
+  background-color: #4b0082;
+  color: white;
+  border: 2px solid white;
+  border-radius: 9999px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  white-space: normal; /* allow line wrapping */
+  word-wrap: break-word;
+  overflow: hidden; /* prevent overflow */
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.choice-button:hover {
+  background-color: #6a0dad;
+}
+
+.choice-button:active {
+  background-color: #3a006b;
+}
+
+#gameQuestion {
+  text-align: center;
+  white-space: normal;
+  word-wrap: break-word;
+  line-height: 1.4;
+  padding: 1rem;
 }
 
 .overlay {
