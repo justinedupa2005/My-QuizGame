@@ -28,6 +28,7 @@
         <!-- POINTS DISPLAY -->
         <div class="w-full h-[30%]">
           <p
+            id="finalScore"
             class="text-[3rem] text-white font-bold"
             style="text-shadow: 2px 2px 0 #3a006b, 4px 4px 0 #2b004f"
           >
@@ -46,5 +47,14 @@
         </div>
       </div>
     </div>
+
+    <!-- JS SCRIPTS -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const finalScore = document.getElementById("finalScore");
+        const score = sessionStorage.getItem("finalScore") || 0;
+        finalScore.textContent = score;
+      });
+    </script>
   </body>
 </html>

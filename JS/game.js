@@ -14,11 +14,15 @@ let questions = JSON.parse(sessionStorage.getItem('questions')) || [];
 let currentIndex = 0;
 let countdownInterval; // for stopping timer later
 let timeLeft = 10; // 10 seconds per question
-let easyLevelNumOfQuestions = 10;
+let easyLevelNumOfQuestions = 20;
 let mediumLevelNumOfQuestions = 15;
 let hardLevelNumOfQuestions = 10;
+let score = 0;
 
 function startGame(){
+    if(currentIndex === 0){
+        score = 0;
+    }
     if(currentIndex < questions.length){
         const q = questions[currentIndex];
         questionContainer.innerHTML = q.question;
@@ -116,6 +120,10 @@ function startGame(){
                 allButtons.forEach(button => button.disabled = true);
 
                 if(answer.isCorrect){
+                    const choosenLevel = sessionStorage.getItem('selectedDifficulty');
+                    if(choosenLevel === "easy") score += 10;
+                    else if(choosenLevel === "medium") score += 15;
+                    else if(choosenLevel === "hard") score += 20
                     console.log("Correct");
                 }
                 else{
@@ -128,8 +136,8 @@ function startGame(){
         });
     }
     else {
-        questionContainer.textContent = "Quiz complete!";
-        choicesContainer.innerHTML = '';
+        sessionStorage.setItem('finalScore', score);
+        window.location.href = 'quizResult.html';
     }
 }
 
