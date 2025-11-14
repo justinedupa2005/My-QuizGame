@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
-import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js";
+import {getAuth, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js";
 import {getFirestore, setDoc, doc} from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
 
 // Your web app's Firebase configuration
@@ -15,22 +15,47 @@ const firebaseConfig = {
 
 // DISPLAY SHOWMESSAGE FUNCTION
 function showMessage(message, divId) {
-  var messageDiv = document.getElementById(divId);
+  const messageDiv = document.getElementById(divId);
+  if (!messageDiv) return; // exit if div not found
   messageDiv.style.display = "block";
   messageDiv.innerHTML = message;
   messageDiv.style.opacity = 1;
-  setTimeout(function(){
-    messageDiv.style.opacity = 0;
-  }, 5000);
+  setTimeout(() => { messageDiv.style.opacity = 0; }, 5000);
 }
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
+auth.languageCode = 'en'
+const provider = new GoogleAuthProvider();
 const db = getFirestore();
 
+const googleSignUp = document.getElementById("google-signin-btn");
+if (googleSignUp) {
+  googleSignUp.addEventListener("click", async () => {
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+
+      // Save to Firestore if first time login
+      await setDoc(doc(db, "users", user.uid), {
+        username: user.displayName,
+        email: user.email
+      }, { merge: true }); // merge avoids overwriting existing data
+
+      showMessage(`Welcome ${user.displayName}`, "signupMessage");
+      localStorage.setItem('loggedInUserId', user.uid);
+      window.location.href = "menu.html";
+
+    } catch (error) {
+      console.error("Google Sign-In Error:", error);
+      showMessage("Google Sign-In Failed. Try again.", "signupMessage");
+    }
+  });
+}
+
 const signUp = document.getElementById("signUpBtn");
-if (signUp) {
+if(signUp) {
   signUp.addEventListener('click', async (event) => {
     event.preventDefault();
     const username = document.getElementById("rUserName").value;
