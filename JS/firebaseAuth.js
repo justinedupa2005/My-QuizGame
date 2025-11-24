@@ -1,7 +1,9 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
-import {getAuth, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js";
-import {getFirestore, setDoc, doc} from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
+import { getAuth, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js";
+import { getFirestore, setDoc, doc, addDoc, collection, getDocs, limit, orderBy, query, updateDoc, where } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
+
+
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -30,6 +32,8 @@ auth.languageCode = 'en'
 const provider = new GoogleAuthProvider();
 const db = getFirestore();
 
+
+//GOOGLE SIGNUP
 const googleSignUp = document.getElementById("google-signin-btn");
 if (googleSignUp) {
   googleSignUp.addEventListener("click", async () => {
@@ -54,6 +58,8 @@ if (googleSignUp) {
   });
 }
 
+
+//SIGNUP FIREBASE
 const signUp = document.getElementById("signUpBtn");
 if(signUp) {
   signUp.addEventListener('click', async (event) => {
@@ -92,6 +98,7 @@ if(signUp) {
 }
 
 
+//SIGNIN FIREBASE
 const signIn = document.getElementById("signInBtn");
 console.log("signInBtn found?", signIn);
 if (signIn) {
@@ -117,3 +124,47 @@ if (signIn) {
     }
   });
 }
+
+
+//LEADERBOARDS FIREBASE
+const IsUsernameExist = async (username) => {
+    const db = getFirestore(app);
+    const querySnapshot = await getDocs(query(collection(db, "leaderboard"), where("username", "==", username)));
+    return querySnapshot.size > 0;
+}
+
+const AddUserInLeaderboard = async (username, score) => {
+    const db = getFirestore(app);
+
+    try {
+        const isUsernameExist = await IsUsernameExist(username);
+        if (isUsernameExist) {
+            const querySnapshot = await getDocs(query(collection(db, "leaderboard"), where("username", "==", username)));
+            querySnapshot.forEach((doc) => {
+                updateDoc(doc.ref, { score: score });
+            });
+            return true;
+        }
+        const docRef = await addDoc(collection(db, "leaderboard"), {
+            username: username,
+            score: score
+        });
+        return true;
+    } catch (e) {
+        console.error("Error adding document: ", e);
+    }
+
+    return false;
+}
+
+const GetLeaderboard = async () => {
+    const db = getFirestore(app);
+    const querySnapshot = await getDocs(query(collection(db, "leaderboard"), orderBy("score", "desc"), limit(10)));
+    let leaderboard = [];
+    querySnapshot.forEach((doc) => {
+        leaderboard.push(doc.data());
+    });
+    return leaderboard;
+}
+
+export { AddUserInLeaderboard, GetLeaderboard, IsUsernameExist };
